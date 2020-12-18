@@ -19,12 +19,16 @@ package com.example.android.diceroller
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+
     lateinit var diceImage: ImageView
+    val text=getString(R.string.saludo)
+    val duration= Toast.LENGTH_LONG
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
-        val randomInt = Random().nextInt(6) + 1
+        val randomInt = Random().nextInt(10) + 1
         val drawableResource = when (randomInt) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
@@ -48,6 +52,8 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
+        val toast = Toast.makeText(applicationContext, text, duration)
+        toast.show()
 
         diceImage.setImageResource(drawableResource)
     }
